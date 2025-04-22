@@ -9,7 +9,6 @@ import { ToastContainer } from 'react-toastify';
 import { queryClient } from '@/config/queryClient';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { useMemo } from 'react';
-import { clusterApiUrl } from '@solana/web3.js';
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   const network = WalletAdapterNetwork.Mainnet;

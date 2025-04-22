@@ -6,8 +6,6 @@ import { Providers } from './providers';
 import { Footer } from '@/widgets/footer/ui';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
-  // Define alternative names with typos and spaces
-  const alternativeNames = [];
 
 export const metadata: Metadata = {
   title: 'Liqudity Loop',

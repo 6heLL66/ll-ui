@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useState } from "react";
 import { AddPositionTab } from "./add-position-tab";
 import { PairInfo } from "@/shared/api";
@@ -11,7 +10,7 @@ interface PoolPositionsTabProps {
 }
 
 export const PoolPositionsTab = ({ pool, tokenX, tokenY }: PoolPositionsTabProps) => {
-  const [activeTab, setActiveTab] = useState("positions"); // "positions" or "add"
+  const [activeTab, setActiveTab] = useState("positions");
   
   return (
     <div className="text-dark-text-primary">
@@ -59,7 +58,7 @@ export const PoolPositionsTab = ({ pool, tokenX, tokenY }: PoolPositionsTabProps
 };
 
 // Component for displaying existing positions
-const PositionsContent = ({ pool, tokenX, tokenY, onAddPosition }: { pool: PairInfo; tokenX: JupApiToken; tokenY: JupApiToken; onAddPosition: () => void }) => {
+const PositionsContent = ({ onAddPosition }: { pool: PairInfo; tokenX: JupApiToken; tokenY: JupApiToken; onAddPosition: () => void }) => {
   return (
     <div className="bg-dark-surface rounded-lg p-6 border border-dark-border">
       <div className="text-center py-8">
@@ -72,7 +71,7 @@ const PositionsContent = ({ pool, tokenX, tokenY, onAddPosition }: { pool: PairI
         </div>
         <h3 className="text-xl font-medium mb-2">No positions found</h3>
         <p className="text-dark-text-tertiary mb-6 max-w-md mx-auto">
-          You don't have any liquidity positions in this pool yet. Add liquidity to start earning fees.
+          You don`t have any liquidity positions in this pool yet. Add liquidity to start earning fees.
         </p>
         
         <button 

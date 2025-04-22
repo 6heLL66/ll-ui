@@ -8,8 +8,8 @@ import { useEffect, useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
+// ts-ignore
 const CustomTooltip = ({ active, payload, label }: any) => {
-  console.log(payload);
   if (active && payload && payload.length) {
     return (
       <div className="bg-[#1A1B23] p-3 min-w-[250px] rounded-md border border-[#2C2D3C] shadow-lg">
@@ -114,6 +114,7 @@ export const RangeSelector = ({ bins, tokenX, tokenY, activeBin, onActiveBinsCha
             <Bar
               dataKey="pv"
               fill="#3D4062"
+              // ts-ignore
               shape={(props: any) => {
                 const { x, y, width, height, payload } = props;
 

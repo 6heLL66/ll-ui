@@ -16,6 +16,7 @@ interface VolatilityChartProps {
   onSelectedBinsChange: (bins: BinLiquidity[], selected: number) => void;
 }
 
+// ts-ignore
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
@@ -123,7 +124,7 @@ export const VolatilityChart = ({ bins, tokenX, tokenY, activeBin, tokenXAmount,
 
                 const isTokenX = selected <= payload.index;
 
-                let fill = isTokenX ? '#6F61C0' : '#22D3EE';
+                const fill = isTokenX ? '#6F61C0' : '#22D3EE';
 
                 return <rect x={x} y={y} rx={4} width={width} height={height} fill={fill} className='hover:opacity-80 transition-opacity duration-100' />;
               }}

@@ -27,7 +27,7 @@ export const PriceRangeCharts = ({
   const { getRange, dlmmPool, activeBinId, setActiveBinId } = useDLMM(new PublicKey(pool.address));
 
   const [activeBins, setActiveBins] = useState<BinLiquidity[]>([]);
-  const [selectedBins, setSelectedBins] = useState<BinLiquidity[]>([]);
+  const [, setSelectedBins] = useState<BinLiquidity[]>([]);
 
   const ref = useRef<{
     left: number;

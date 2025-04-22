@@ -18,13 +18,6 @@ export const PriceRangeSelector = ({ pool, tokenX, tokenY, tokenXAmount, tokenYA
   const [selectedStrategy, setSelectedStrategy] = useState<VolatilityStrategy>('curve');
   const [invertedPrice, setInvertedPrice] = useState(false);
 
-  // Get the current price display based on inversion state
-  const getPriceDisplay = () => {
-    return invertedPrice 
-      ? `${tokenY.symbol} per ${tokenX.symbol}`
-      : `${tokenX.symbol} per ${tokenY.symbol}`;
-  };
-
   const getStrategyDescription = () => {
     switch (selectedStrategy) {
       case 'spot':
@@ -41,14 +34,14 @@ export const PriceRangeSelector = ({ pool, tokenX, tokenY, tokenXAmount, tokenYA
   // Base color for charts
   const baseColor = "#06b6d4"; // Cyan color as shown in the screenshot
   
-  // Generate gradient colors for multi-color effect
+  // ts-ignore
   const getBarColors = (data: any[], strategy: VolatilityStrategy) => {
     if (strategy === 'spot') {
       // All bars same color for spot
       return data.map(() => baseColor);
     } else if (strategy === 'curve') {
       // Gradient from light to dark for curve
-      return data.map((entry, index) => {
+      return data.map((entry) => {
         const intensity = entry.value;
         return `rgba(6, 182, 212, ${0.3 + intensity * 0.7})`; // Vary opacity based on value
       });
@@ -136,7 +129,7 @@ export const PriceRangeSelector = ({ pool, tokenX, tokenY, tokenXAmount, tokenYA
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={curveData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                 <Bar dataKey="value" isAnimationActive={true} animationDuration={1000} animationEasing="ease-in-out">
-                  {curveData.map((entry, index) => (
+                  {curveData.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={curveColors[index]} />
                   ))}
                 </Bar>
