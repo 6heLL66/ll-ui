@@ -48,12 +48,10 @@ export const VolatilityChart = ({ bins, tokenX, tokenY, activeBin, tokenXAmount,
       if (index < selected) {
         return acc;
       }
-      return acc + (1 / Math.sqrt(+bin.pricePerToken));
+      return acc + (1 / +bin.pricePerToken);
     }, 0);
 
-    console.log(total);
-
-    const pvFactor = TokenAmount.fromHumanAmount(tokenX.token, ((1 / Math.sqrt(+bin.pricePerToken)) / total).toString() as `${number}`);
+    const pvFactor = TokenAmount.fromHumanAmount(tokenX.token, ((1 / +bin.pricePerToken) / total).toString() as `${number}`);
 
     const tokenYFactor = TokenAmount.fromHumanAmount(tokenY.token, selected.toString() as `${number}`);
     const amount = isTokenX

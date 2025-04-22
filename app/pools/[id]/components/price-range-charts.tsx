@@ -26,6 +26,8 @@ export const PriceRangeCharts = ({
 }) => {
   const { getRange, dlmmPool, activeBinId, setActiveBinId } = useDLMM(new PublicKey(pool.address));
 
+  const [fullRange, setFullRange] = useState<BinLiquidity[]>([]);
+
   const [activeBins, setActiveBins] = useState<BinLiquidity[]>([]);
   const [, setSelectedBins] = useState<BinLiquidity[]>([]);
 
@@ -47,6 +49,10 @@ export const PriceRangeCharts = ({
     dlmmPool.data.refetchStates().then(() => {
       const range = getRange(TokenAmount.fromHumanAmount(tokenX.token, tokenXAmount as `${number}`), TokenAmount.fromHumanAmount(tokenY.token, tokenYAmount as `${number}`))!
       ref.current = range;
+      dlmmPool.data.getBinsAroundActiveBin(MAX_SIDE_RANGE * 4, MAX_SIDE_RANGE * 4).then(a => {
+        setFullRange(a.bins);
+      })
+     
       dlmmPool.data.getBinsAroundActiveBin(range.left, range.right).then(a => {
         setBinsRange(a);
         setActiveBinId(a?.activeBin ?? 0);
@@ -77,24 +83,38 @@ export const PriceRangeCharts = ({
     setActiveBins(bins);
   };
 
+  const getBinsLocal = (left: number, right: number) => {
+    const lowerBinId = activeBinId! - left - 1;
+    const upperBinId = activeBinId! + right + 1;
+    return fullRange.filter(bin => bin.binId >= lowerBinId && bin.binId <= upperBinId);
+  }
+
+  const refetchStates = async () => {
+    if (!dlmmPool.data) return;
+    await dlmmPool.data.refetchStates();
+  }
+
+  const refetchStatesDebounced = useMemo(() => debounce(refetchStates, 200), []);
+
   const handleSelectedBinsChange = async (bins: BinLiquidity[], selected: number) => {
     if (!dlmmPool.data) return;
     setSelectedBins(bins);
-    await dlmmPool.data.refetchStates()
-    const range = await dlmmPool.data.getBinsAroundActiveBin(selected - 1, MAX_SIDE_RANGE * 2 - selected + 1);
+    refetchStatesDebounced()
+    const range = getBinsLocal(selected, MAX_SIDE_RANGE * 2 - selected);
     ref.current = {left: selected - 1, right: MAX_SIDE_RANGE * 2 - selected + 1};
 
-    setBinsRange(range);
+    setBinsRange({
+      bins: range,
+      activeBin: activeBinId ?? 0,
+    });
   };
-
-  const handleSelectedBinsChangeDebounced = useMemo(() => debounce(handleSelectedBinsChange, 100), [handleSelectedBinsChange]);
 
   return (
     <div>
       {activeBins.length && (
         <VolatilityChart
           bins={activeBins}
-          onSelectedBinsChange={handleSelectedBinsChangeDebounced}
+          onSelectedBinsChange={handleSelectedBinsChange}
           tokenX={tokenX}
           tokenY={tokenY}
           activeBin={activeBinId ?? 0}

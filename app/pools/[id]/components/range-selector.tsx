@@ -114,6 +114,9 @@ export const RangeSelector = ({ bins, tokenX, tokenY, activeBin, onActiveBinsCha
             <Bar
               dataKey="pv"
               fill="#3D4062"
+              isAnimationActive={true}
+              animationDuration={500}
+              animationEasing="ease-in-out"
               // ts-ignore
               shape={(props: any) => {
                 const { x, y, width, height, payload } = props;
