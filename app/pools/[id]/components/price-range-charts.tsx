@@ -28,6 +28,8 @@ export const PriceRangeCharts = ({
 
   const [fullRange, setFullRange] = useState<BinLiquidity[]>([]);
 
+  const [selectedRange, setSelectedRange] = useState<[number, number]>([0, 0]);
+
   const [activeBins, setActiveBins] = useState<BinLiquidity[]>([]);
   const [, setSelectedBins] = useState<BinLiquidity[]>([]);
 
@@ -72,7 +74,7 @@ export const PriceRangeCharts = ({
   useEffect(() => {
     const interval = setInterval(async () => {
       refreshRange()
-    }, 2000);
+    }, 8000);
 
     return () => {
       clearInterval(interval);
@@ -100,8 +102,9 @@ export const PriceRangeCharts = ({
     if (!dlmmPool.data) return;
     setSelectedBins(bins);
     refetchStatesDebounced()
-    const range = getBinsLocal(selected, MAX_SIDE_RANGE * 2 - selected);
-    ref.current = {left: selected - 1, right: MAX_SIDE_RANGE * 2 - selected + 1};
+    console.log(selectedRange, selected)
+    const range = getBinsLocal(selected + selectedRange[0] - 1, MAX_SIDE_RANGE * 2 - (selected + selectedRange[0]) + 1);
+    ref.current = {left: selected + selectedRange[0] - 1, right: MAX_SIDE_RANGE * 2 - (selected + selectedRange[0]) + 1};
 
     setBinsRange({
       bins: range,
@@ -111,7 +114,7 @@ export const PriceRangeCharts = ({
 
   return (
     <div>
-      {activeBins.length && (
+      {activeBins.length && (tokenXAmount || tokenYAmount) && (
         <VolatilityChart
           bins={activeBins}
           onSelectedBinsChange={handleSelectedBinsChange}
@@ -122,7 +125,7 @@ export const PriceRangeCharts = ({
           tokenYAmount={tokenYAmount}
         />
       )}
-      {binsRange?.bins && <RangeSelector bins={binsRange?.bins || []} tokenX={tokenX} tokenY={tokenY} activeBin={activeBinId ?? 0} onActiveBinsChange={handleActiveBinsChange} />}
+      {binsRange?.bins && <RangeSelector bins={binsRange?.bins || []} tokenX={tokenX} tokenY={tokenY} activeBin={activeBinId ?? 0} onSelectedRangeChange={setSelectedRange} onActiveBinsChange={handleActiveBinsChange} />}
     </div>
   );
 };

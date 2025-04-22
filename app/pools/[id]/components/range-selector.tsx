@@ -45,7 +45,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-export const RangeSelector = ({ bins, tokenX, tokenY, activeBin, onActiveBinsChange }: { bins: BinLiquidity[]; tokenX: JupApiToken; tokenY: JupApiToken; activeBin: number; onActiveBinsChange: (bins: BinLiquidity[]) => void }) => {
+export const RangeSelector = ({ bins, tokenX, tokenY, activeBin, onSelectedRangeChange, onActiveBinsChange }: { bins: BinLiquidity[]; tokenX: JupApiToken; tokenY: JupApiToken; activeBin: number; onSelectedRangeChange: (range: [number, number]) => void ; onActiveBinsChange: (bins: BinLiquidity[]) => void }) => {
   const getPv = (bin: Bin, activeBin: number) => {
     if (bin.binId === activeBin) {
       
@@ -80,6 +80,7 @@ export const RangeSelector = ({ bins, tokenX, tokenY, activeBin, onActiveBinsCha
 
   useEffect(() => {
     setSelectedRange([0, bins.length - 1]);
+    onSelectedRangeChange([0, bins.length - 1]);
     onActiveBinsChange(bins);
   }, []);
 
@@ -90,6 +91,7 @@ export const RangeSelector = ({ bins, tokenX, tokenY, activeBin, onActiveBinsCha
   const handleRangeChange = (value: number | number[]) => {
     if (Array.isArray(value) && value.length === 2) {
       setSelectedRange([value[0], value[1]]);
+      onSelectedRangeChange([value[0], value[1]]);
       onActiveBinsChange(bins.slice(value[0], value[1] + 1));
     }
   };
@@ -114,9 +116,6 @@ export const RangeSelector = ({ bins, tokenX, tokenY, activeBin, onActiveBinsCha
             <Bar
               dataKey="pv"
               fill="#3D4062"
-              isAnimationActive={true}
-              animationDuration={500}
-              animationEasing="ease-in-out"
               // ts-ignore
               shape={(props: any) => {
                 const { x, y, width, height, payload } = props;
