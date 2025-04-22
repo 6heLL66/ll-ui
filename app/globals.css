@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --primary-default: #ff9f5b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+header a:hover {
+  color: var(--primary-default);
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+label[data-selected='true'] > span {
+  background-color: var(--primary-default) !important;
+}
+
+.discord *,
+.gitbook *,
+.x * {
+  transition: all 0.3s;
+}
+
+.discord:hover div:first-child {
+  background-color: #8c9eff;
+}
+
+.discord:hover svg path {
+  fill: #ffffff;
+}
+
+.gitbook:hover div:first-child {
+  background-color: #ffffff;
+}
+
+.gitbook:hover svg path {
+  fill: #000000;
+}
+
+.x:hover div:first-child {
+  background-color: #1da1f2;
+}
+
+.x:hover svg path {
+  fill: #ffffff;
+}
+
+#canvas-club {
+  position: absolute;
+  pointer-events: none;
+  max-width: 98vw;
+  max-height: 100vh;
+  overflow: hidden;
+  margin-left: auto;
+  top: 0;
+  left: 0;
+
+  background-color: tranparent;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-15px) translateX(15px);
+  }
+  50% {
+    transform: translateY(-25px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-15px) translateX(-15px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.95) rotate(360deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-orb {
+  0% {
+    transform: scale(0.95);
+    filter: brightness(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(0.95);
+    filter: brightness(0.8);
+  }
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.3;
+    filter: blur(80px) brightness(0.8);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(100px) brightness(1.2);
+  }
+  100% {
+    opacity: 0.3;
+    filter: blur(80px) brightness(0.8);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 5s infinite ease-in-out;
+}
+
+.animate-pulse-orb {
+  animation: pulse-orb 3s infinite ease-in-out;
+}
+
+.animate-glow {
+  animation: glow 4s infinite ease-in-out;
+}

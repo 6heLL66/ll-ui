@@ -1,0 +1,323 @@
+.buttonWrapper :global(.wallet-adapter-button) {
+  background: rgba(20, 20, 30, 0.7) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 16px 0.875rem !important;
+  height: auto !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  backdrop-filter: blur(8px) !important;
+  min-width: 140px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  letter-spacing: 0.02em !important;
+  position: relative !important;
+  overflow: hidden !important;
+  line-height: 1.2 !important;
+}
+
+.buttonWrapper :global(.wallet-adapter-button::before) {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  ) !important;
+  transition: 0.5s !important;
+}
+
+.buttonWrapper :global(.wallet-adapter-button:hover::before) {
+  left: 100% !important;
+}
+
+.buttonWrapper :global(.wallet-adapter-button:hover) {
+  background: rgba(30, 30, 45, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+}
+
+.buttonWrapper :global(.wallet-adapter-button:active) {
+  transform: translateY(1px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Стили для выпадающего меню */
+.buttonWrapper :global(.wallet-adapter-dropdown-list) {
+  background: rgba(20, 20, 30, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  padding: 0.5rem !important;
+  margin-top: 0.75rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.buttonWrapper :global(.wallet-adapter-dropdown-list-item) {
+  font-size: 0.875rem !important;
+  transition: all 0.2s !important;
+  border-radius: 12px !important;
+  padding: 0.625rem 0.875rem !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.buttonWrapper :global(.wallet-adapter-dropdown-list-item:last-child) {
+  margin-bottom: 0 !important;
+}
+
+.buttonWrapper :global(.wallet-adapter-dropdown-list-item:hover) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: white !important;
+  transform: translateX(2px) !important;
+}
+
+/* Стиль для иконки кошелька */
+.buttonWrapper :global(.wallet-adapter-button-start-icon) {
+  margin-right: 0.625rem !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) !important;
+  transition: all 0.3s !important;
+}
+
+.buttonWrapper :global(.wallet-adapter-button:hover .wallet-adapter-button-start-icon) {
+  transform: scale(1.1) !important;
+}
+
+/* Стиль для сокращенного адреса кошелька */
+.buttonWrapper :global(.wallet-adapter-button-end-icon) {
+  margin-left: 0.625rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  opacity: 0.9 !important;
+  font-size: 0.8rem !important;
+}
+
+/* Добавляем стиль для текста "Connect Wallet" */
+.connectText {
+  display: inline-block !important;
+  font-weight: 600 !important;
+  color: white !important;
+}
+
+/* Переопределяем стиль для состояния без кошелька */
+.buttonWrapper :global(.wallet-adapter-button-trigger) {
+  background: rgba(20, 20, 30, 0.7) !important;
+}
+
+/* Скрываем стандартный текст "No Wallet" */
+.buttonWrapper :global(.wallet-adapter-button:not(.wallet-adapter-button-trigger) span:first-child) {
+  display: none !important;
+}
+
+/* Добавляем стиль для кнопки в состоянии без кошелька */
+.customButton {
+  background: rgba(20, 20, 30, 0.7) !important;
+}
+
+/* Добавляем стиль для пользовательской кнопки кошелька */
+.customWalletButton {
+  background: rgba(20, 20, 30, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 0.875rem;
+  height: auto;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.customWalletButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.customWalletButton:hover::before {
+  left: 100%;
+}
+
+.customWalletButton:hover {
+  background: rgba(30, 30, 45, 0.8);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.customWalletButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Стили для модального окна кошельков */
+:global(.wallet-adapter-modal) {
+  backdrop-filter: blur(15px);
+}
+
+:global(.wallet-adapter-modal-wrapper) {
+  background: rgba(20, 20, 30, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
+  max-width: 500px;
+  width: 100%;
+}
+
+:global(.wallet-adapter-modal-title) {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+:global(.wallet-adapter-modal-list) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:global(.wallet-adapter-modal-list li) {
+  margin: 0;
+  padding: 0;
+}
+
+:global(.wallet-adapter-modal-list-item) {
+  background: rgba(30, 30, 45, 0.5);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  transition: all 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.wallet-adapter-modal-list-item:hover) {
+  background: rgba(40, 40, 60, 0.7);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+:global(.wallet-adapter-modal-list-item-icon) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+:global(.wallet-adapter-modal-list-item-icon img) {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+:global(.wallet-adapter-modal-list-item-name) {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+}
+
+:global(.wallet-adapter-modal-list-item-description) {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+  text-align: center;
+}
+
+:global(.wallet-adapter-modal-button-close) {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+:global(.wallet-adapter-modal-button-close:hover) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+:global(.wallet-adapter-modal-middle-button) {
+  background: rgba(20, 20, 30, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.wallet-adapter-modal-middle-button:hover) {
+  background: rgba(30, 30, 45, 0.8);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+} 
