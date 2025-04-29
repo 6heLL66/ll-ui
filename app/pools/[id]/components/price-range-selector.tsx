@@ -166,23 +166,14 @@ export const PriceRangeSelector = ({ pool, tokenX, tokenY, tokenXAmount, tokenYA
         <div className="flex items-center space-x-2">
           <div className="flex items-center">
             <div className="w-3 h-3 rounded-full bg-indigo-500 mr-2"></div>
-            <span className="text-sm text-dark-text-tertiary">{invertedPrice ? tokenY.symbol : tokenX.symbol}</span>
+            <span className="text-sm text-dark-text-tertiary">{tokenX.symbol}</span>
           </div>
-          
-          {/* Token Switch Button */}
-          <button 
-            onClick={handleTokenSwitch}
-            className="flex items-center justify-center w-6 h-6 rounded-full bg-dark-surface-hover hover:bg-dark-surface-active transition-colors"
-          >
-            <svg className="w-4 h-4 text-dark-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-            </svg>
-          </button>
           
           <div className="flex items-center">
             <div className="w-3 h-3 rounded-full bg-cyan-400 mr-2"></div>
-            <span className="text-sm text-dark-text-tertiary">{invertedPrice ? tokenX.symbol : tokenY.symbol}</span>
+            <span className="text-sm text-dark-text-tertiary">{tokenY.symbol}</span>
           </div>
+          
         </div>
       </div>
 
