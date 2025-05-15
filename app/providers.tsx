@@ -11,7 +11,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { useMemo } from 'react';
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
-  const network = WalletAdapterNetwork.Mainnet;
+  const network = WalletAdapterNetwork.Devnet;
 
   const endpoint = 'https://misty-omniscient-sea.solana-mainnet.quiknode.pro/83153b5b2ccf547e5f1684cd907a585dae65de9d';
   const wallets = useMemo(() => [new PhantomWalletAdapter(), new SolflareWalletAdapter()], [network]);

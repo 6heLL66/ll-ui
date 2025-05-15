@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {  BarChart, Bar, ResponsiveContainer, Cell } from 'recharts';
 import { generateSpotData, generateCurveData, generateBidAskData } from './utils';
-import { PairInfo } from '@/shared/api';
+import { PairInfo } from '@/shared/dlmm-api';
 import { JupApiToken } from '@/features/tokens/useTokens';
 import { PriceRangeCharts } from './price-range-charts';
 

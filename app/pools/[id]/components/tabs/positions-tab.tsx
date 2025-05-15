@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AddPositionTab } from "./add-position-tab";
-import { PairInfo } from "@/shared/api";
+import { PairInfo } from "@/shared/dlmm-api";
 import { JupApiToken } from "@/features/tokens/useTokens";
 
 interface PoolPositionsTabProps {

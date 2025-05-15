@@ -2,7 +2,7 @@
 
 import { MAX_SIDE_RANGE, useDLMM } from '@/features/pools/useDLMM';
 import { JupApiToken } from '@/features/tokens/useTokens';
-import { PairInfo } from '@/shared/api';
+import { PairInfo } from '@/shared/dlmm-api';
 import { TokenAmount } from '@/shared/utils/tokenAmount';
 import { Bin, BinLiquidity } from '@meteora-ag/dlmm';
 import { PublicKey } from '@solana/web3.js';

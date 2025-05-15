@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { formatCurrency } from '@/lib/utils';
 import { ChevronRight } from 'lucide-react';
-import { PairInfo } from '@/shared/api';
+import { PairInfo } from '@/shared/dlmm-api';
 import Image from 'next/image';
 import { useTokens } from '@/features/tokens/useTokens';
 import { useRouter } from 'next/navigation';

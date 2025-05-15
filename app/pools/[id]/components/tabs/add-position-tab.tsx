@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { PriceRangeSelector } from "../price-range-selector";
-import { PairInfo } from "@/shared/api";
+import { PairInfo } from "@/shared/dlmm-api";
 import { JupApiToken } from "@/features/tokens/useTokens";
 interface AddPositionTabProps {
   pool: PairInfo;

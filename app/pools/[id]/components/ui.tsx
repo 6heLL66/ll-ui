@@ -1,5 +1,5 @@
 'use client';
-import { PairRouteService } from '@/shared/api';
+import { PairRouteService } from '@/shared/dlmm-api';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';

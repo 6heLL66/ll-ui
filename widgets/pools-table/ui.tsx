@@ -5,7 +5,7 @@ import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components
 import { PoolRow } from './pool-row';
 import { Input } from '@/components/ui/input';
 import { Search, ArrowUpDown, Filter, Loader2 } from 'lucide-react';
-import { PairInfo } from '@/shared/api';
+import { PairInfo } from '@/shared/dlmm-api';
 import { Pagination } from '@heroui/react';
 
 interface PoolsTableProps {
